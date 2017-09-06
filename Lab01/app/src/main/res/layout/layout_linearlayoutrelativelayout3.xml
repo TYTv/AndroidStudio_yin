@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+
+        android:layout_margin="8dp"
+        android:background="@android:color/holo_blue_light"
+        android:padding="16dp"
+        android:text="tom"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/kevin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        android:layout_toLeftOf="@id/tom"
+
+        android:background="@android:color/holo_blue_light"
+        android:padding="16dp"
+        android:text="kevin"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/john"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="8dp"
+
+        android:layout_toRightOf="@id/tom"
+        android:background="@android:color/holo_blue_light"
+        android:padding="16dp"
+        android:text="john"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/amy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:layout_margin="8dp"
+        android:background="@android:color/holo_green_light"
+        android:padding="16dp"
+        android:text="amy"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/jimmy"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/amy"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+
+        android:background="@android:color/holo_green_light"
+        android:padding="16dp"
+        android:text="jimmy"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/steve"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@id/jimmy"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+
+        android:background="@android:color/holo_green_light"
+        android:padding="16dp"
+        android:text="steve"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/linda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+
+        android:layout_margin="8dp"
+        android:background="@android:color/holo_red_light"
+        android:padding="16dp"
+        android:text="linda"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/coco"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/amy"
+
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+
+
+        android:layout_toRightOf="@id/linda"
+
+        android:background="@android:color/holo_red_light"
+        android:padding="16dp"
+        android:text="cooc"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/maria"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@id/linda"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="8dp"
+
+        android:background="@android:color/holo_red_light"
+        android:padding="16dp"
+        android:text="maria"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>
