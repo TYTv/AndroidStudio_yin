@@ -7,8 +7,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv;
-    int number = 0;
+    TextView tvH;
+    TextView tvF;
+    int numberH = 0;
+    int numberF = 0;
 
 
     @Override
@@ -16,13 +18,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv = (TextView) findViewById(R.id.TextViewNumber);
+        tvH = (TextView) findViewById(R.id.TextViewNumberH);
+        tvF = (TextView) findViewById(R.id.TextViewNumberF);
 
-        findViewById(R.id.ButtonB3).setOnClickListener(vo);
-        findViewById(R.id.ButtonB2).setOnClickListener(vo);
-        findViewById(R.id.ButtonBr).setOnClickListener(vo);
+        findViewById(R.id.ButtonB3H).setOnClickListener(vo);
+        findViewById(R.id.ButtonB2H).setOnClickListener(vo);
+        findViewById(R.id.ButtonBrH).setOnClickListener(vo);
+
+        findViewById(R.id.ButtonB3F).setOnClickListener(vo);
+        findViewById(R.id.ButtonB2F).setOnClickListener(vo);
+        findViewById(R.id.ButtonBrF).setOnClickListener(vo);
+
         findViewById(R.id.ButtonRst).setOnClickListener(vo);
-
 
     }
 
@@ -31,17 +38,29 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             switch (view.getId()) {
-                case R.id.ButtonB3:
-                    number += 3;
+                case R.id.ButtonB3H:
+                    numberH += 3;
                     break;
-                case R.id.ButtonB2:
-                    number += 2;
+                case R.id.ButtonB2H:
+                    numberH += 2;
                     break;
-                case R.id.ButtonBr:
-                    number += 1;
+                case R.id.ButtonBrH:
+                    numberH += 1;
                     break;
+
+                case R.id.ButtonB3F:
+                    numberF += 3;
+                    break;
+                case R.id.ButtonB2F:
+                    numberF += 2;
+                    break;
+                case R.id.ButtonBrF:
+                    numberF += 1;
+                    break;
+
                 case R.id.ButtonRst:
-                    number = 0;
+                    numberH = 0;
+                    numberF = 0;
                     break;
                 default:
                     break;
@@ -54,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void display() {
-        tv.setText(Integer.toString(number));
+        tvH.setText(Integer.toString(numberH));
+        tvF.setText(Integer.toString(numberF));
     }
 
 /*
