@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:onClick="onClickKor"
+            android:onClick="onClickAll"
             android:text="泡菜"
             android:textSize="20sp" />
 
@@ -43,10 +43,11 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/ButtonP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:onClick="onClickP"
+                android:onClick="onClickAll"
                 android:text="＋" />
 
             <TextView
@@ -60,10 +61,11 @@
                 android:textSize="30sp" />
 
             <Button
+                android:id="@+id/ButtonM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:onClick="onClickM"
+                android:onClick="onClickAll"
                 android:text="－" />
 
 
@@ -90,10 +92,11 @@
             android:textSize="16sp" />
 
         <Button
+            android:id="@+id/ButtonOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:onClick="onClickOrder"
+            android:onClick="onClickAll"
             android:text="Order" />
 
 

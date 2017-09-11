@@ -30,25 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickOrder(View view) {
-        tvntd.setText(CalOrder().toString());
-    }
-
-    public void onClickP(View view) {
-        int i = getTextQuty() + 1;
-        tvntd.setText("");
-        if (i <= 10) {
-            setTextQuty(i);
-        }
-    }
-
-    public void onClickM(View view) {
-        int i = getTextQuty() - 1;
-        tvntd.setText("");
-        if (i >= 0) {
-            setTextQuty(i);
-        }
-    }
 
     private int getTextQuty() {
         mQuty = Integer.valueOf(tv.getText().toString());
@@ -75,23 +56,53 @@ public class MainActivity extends AppCompatActivity {
         sb
                 .append("客戶:孫悟空\n")
                 .append("商品:臭豆腐\n")
-                .append("加泡菜?" + cb.isChecked() + "\n")
-                .append("數量:" + mQuty + "\n")
-                .append("單價:" + mSiPri + "(" + mKor + ")\n")
-                .append("=================\n")
-                .append("總金額:" + NumberFormat.getCurrencyInstance().format($) + "\n");
+                .append("加泡菜?" + cb.isChecked() + "\n");
+
 
         if (mQuty > 0) {
+            sb
+                    .append("數量:" + mQuty + "\n")
+                    .append("單價:" + mSiPri + "(" + mKor + ")\n")
+                    .append("=================\n")
+                    .append("總金額:" + NumberFormat.getCurrencyInstance().format($) + "\n");
+
             sb.append("Thanks !\n");
         } else {
-            sb.append("Free !\n");
+            sb
+                    .append("免費試吃!\n")
+                    .append("Free !\n");
         }
 
         return sb.toString();
     }
 
 
-    public void onClickKor(View view) {
-        tvntd.setText("");
+    public void onClickAll(View view) {
+        tvntd.setText("選好請下單 !");
+        int i;
+        switch (view.getId()) {
+            case R.id.CheckBoxKorea:
+                break;
+            case R.id.ButtonP:
+                i = getTextQuty() + 1;
+                if (i <= 10) {
+                    setTextQuty(i);
+                }
+                break;
+            case R.id.ButtonM:
+                i = getTextQuty() - 1;
+                if (i >= 0) {
+                    setTextQuty(i);
+                }
+                break;
+            case R.id.ButtonOrder:
+                tvntd.setText(CalOrder().toString());
+                break;
+            default:
+                break;
+        }
+
     }
+
+
 }
