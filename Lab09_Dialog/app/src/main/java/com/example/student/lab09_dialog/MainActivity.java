@@ -5,11 +5,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
 
-    TextView tvm;
+    private TextView tvm;
+    private int mChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                         .show();
                 break;
             case R.id.ButtonMulitSelect:
-
                 new AlertDialog.Builder(this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar)
                         .setTitle("你好帥")
                         .setMultiChoiceItems(rsp, sel, new DialogInterface.OnMultiChoiceClickListener() {
@@ -102,6 +103,34 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
                         })
                         .show();
+                break;
+            case R.id.ButtonSingleSelect:
+                mChoice = 0;
+                new AlertDialog.Builder(this)
+                        .setTitle("你好帥")
+                        .setSingleChoiceItems(rsp, mChoice, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                mChoice = i;
+                            }
+                        })
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                tvm.setText(rsp[mChoice]);
+                            }
+                        })
+                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                tvm.setText("無語");
+                            }
+                        })
+                        .show();
+                break;
+            case R.id.ButtonFragment:
+                DialogFragment df = new DialogFragment();
+                df.show(getSupportFragmentManager(), "DialogFragment");
                 break;
             default:
                 break;
