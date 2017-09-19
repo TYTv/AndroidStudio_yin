@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Response">
+        <item>我知道</item>
+        <item>少狗腿</item>
+        <item>大家都這麼說</item>
+        <item>你好帥鵝</item>
+        <item>感謝</item>
+        <item>了解</item>
+        <item>不客氣</item>
+        <item>你好帥窩</item>
+        <item>謝謝</item>
+        <item>朕知道了</item>
+        <item>我知道了</item>
+    </string-array>
+
+</resources>

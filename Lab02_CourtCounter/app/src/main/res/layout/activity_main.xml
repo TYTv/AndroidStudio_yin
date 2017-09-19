@@ -14,26 +14,28 @@
         android:orientation="horizontal">
 
         <fragment
-            android:name="layout.BlankFragment"
+            android:id="@+id/FragmentTeam1"
+            android:name="com.example.student.lab02_courtcounter.FragmentTeam"
             android:layout_width="0dp"
-            android:layout_weight="100"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_blank"></fragment>
+            android:layout_weight="100"
+            tools:layout="@layout/fragment_team"></fragment>
 
         <View
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="400dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_weight="1"
             android:background="@android:color/darker_gray" />
 
         <fragment
-            android:name="layout.BlankFragment"
+            android:id="@+id/FragmentTeam2"
+            android:name="com.example.student.lab02_courtcounter.FragmentTeam"
             android:layout_width="0dp"
-            android:layout_weight="100"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_blank"></fragment>
+            android:layout_weight="100"
+            tools:layout="@layout/fragment_team"></fragment>
 
     </LinearLayout>
 
@@ -50,7 +52,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="bottom"
             android:layout_margin="10dp"
-            android:onClick="onClickAll"
+            android:onClick="onClickRst"
             android:text="重置" />
 
     </RelativeLayout>

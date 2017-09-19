@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.student.lab07_activitiyintent.ColorActivity">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/RadioButtonRead"
+            style="StyRdoBut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/holo_red_light"
+            android:onClick="onClickAll"
+            android:text="holo_read_light"
+            android:textColor="@android:color/holo_red_light" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonOrange"
+            style="StyRdoBut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/holo_orange_dark"
+            android:onClick="onClickAll"
+            android:text="holo_orange_dark"
+            android:textColor="@android:color/holo_orange_dark" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonGreen"
+            style="StyRdoBut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/holo_green_light"
+            android:onClick="onClickAll"
+            android:text="holo_green_light"
+            android:textColor="@android:color/holo_green_light" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonBlue"
+            style="StyRdoBut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/holo_blue_dark"
+            android:onClick="onClickAll"
+            android:text="holo_blue_dark"
+            android:textColor="@android:color/holo_blue_dark" />
+
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ButtonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAll"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/ButtonOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAll"
+            android:text="Ok" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
