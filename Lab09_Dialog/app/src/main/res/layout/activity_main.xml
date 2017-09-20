@@ -55,20 +55,4 @@
         android:text="AlertDialog MUTI SEL"
         android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/ButtonSingleSelect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="OnClickAll"
-        android:text="AlertDialog SING SEL"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/ButtonFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="OnClickAll"
-        android:text="AlertDialog Fragment"
-        android:textAllCaps="false" />
-
 </LinearLayout>
