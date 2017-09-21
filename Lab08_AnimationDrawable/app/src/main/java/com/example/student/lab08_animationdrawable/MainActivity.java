@@ -1,6 +1,7 @@
 package com.example.student.lab08_animationdrawable;
 
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,12 +11,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.nio.DoubleBuffer;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvmsg;
     private ImageView ivshow;
     private AnimationDrawable ani;
+    private String[] slogoname;
+    TypedArray ta;
     private Handler han = new Handler();
+    private Handler hanStart = new Handler();
+    private Runnable rabStart = new GOSTART();
+    private Handler hanStop = new Handler();
 
     private View vlogo;
     private TextView tvlogo;
@@ -68,20 +76,30 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.ButtonGo:
                 Resources r = getResources();
-                String[] slogoname = r.getStringArray(R.array.NBA_logoname);
-                tvlogo.setText(slogoname[logoindex]);
+                slogoname = r.getStringArray(R.array.NBA_logoname);
+                ta = getResources().obtainTypedArray(R.array.NBA_logos);
 
                 String[] slogos = r.getStringArray(R.array.NBA_logos);
                 Drawable d = Drawable.createFromPath(slogos[logoindex]);
 
+                rabStart = new GOSTART();
+                hanStart.post(rabStart);
 
-                //vlogo.setBackground(getDrawable(R.drawable.nba_logo_clippers));
-                vlogo.setBackground( r.getDrawable(R.drawable.nba_logo_clippers)  );
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        hanStart.removeCallbacks(rabStart);     // 停止 rabSrart
+                        tvgo.setText("完成");
+                    }
+                }, 3000);
 
+
+/*
                 logoindex++;
                 if (logoindex >= slogoname.length) {
                     logoindex = 0;
                 }
+*/
                 break;
             default:
                 break;
@@ -89,11 +107,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    int FUNC_RANDOM(int min, int max) {
+        double rdn = Math.random() * max;
+        while ((rdn < min) || (rdn > max)) {
+            rdn = Math.random() * max;
+        }
+        return (int) rdn;
+    }
+
     private class TIMEUP implements Runnable {
         @Override
         public void run() {
             ani.stop();
             tvmsg.setText("時間到");
+        }
+    }
+
+    private class GOSTART implements Runnable {
+        @Override
+        public void run() {
+            int rdn = FUNC_RANDOM(0, slogoname.length);
+            while (rdn == logoindex) {
+                rdn = FUNC_RANDOM(0, slogoname.length);
+            }
+            logoindex = rdn;
+            hanStart.postDelayed(rabStart, 100);
+            tvgo.setText("post成功");
+
+            vlogo.setBackground(ta.getDrawable(logoindex));
+            tvlogo.setText(slogoname[logoindex]);
         }
     }
 
