@@ -1,13 +1,34 @@
 <resources>
     <string name="app_name">Lab08_Quizzes</string>
 
-    <string name="Q1">請問 \"1\" + 1 的結果是 ?</string>
+    <string name="Q1_Q">請問 \"1\" + 1 的結果是 ?</string>
     <string name="Q1_A">編譯失敗</string>
     <string name="Q1_B">2</string>
     <string name="Q1_C">11</string>
     <string name="Q1_D">11</string>
 
-
+    <string name="BankSize">3</string>
+    <string-array name="Q1">
+        <item>請問 \"1\" + 1 的結果是 ?</item>
+        <item>編譯失敗</item>
+        <item>2</item>
+        <item>11</item>
+        <item>以上皆非</item>
+    </string-array>
+    <string-array name="Q2">
+        <item>請問 marge 在 android layout 的用途 ?</item>
+        <item>根本就沒有這個功能</item>
+        <item>將一個 Layout 併入另一個 Layout，可節省一層 ViewGroup</item>
+        <item>版本控制系統用來合併不同的分支</item>
+        <item>以上皆非</item>
+    </string-array>
+    <string-array name="Q3">
+        <item>請問切換 Activity 要呼叫哪一個方法 ?</item>
+        <item>startActivity()</item>
+        <item>stratActivityForResult()</item>
+        <item>以上皆是</item>
+        <item>以上皆非</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -13,9 +13,6 @@
         android:orientation="vertical">
 
 
-
-
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -23,6 +20,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/TextViewNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -32,10 +30,6 @@
         </LinearLayout>
 
 
-
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -43,16 +37,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/TextViewQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textSize="20sp"
                 android:layout_weight="1"
-                android:text="Question:" />
+                android:text="Question:"
+                android:textSize="20sp" />
         </LinearLayout>
-
-
-
-
 
 
         <LinearLayout
@@ -62,29 +53,34 @@
             android:orientation="vertical">
 
             <RadioButton
+                android:id="@+id/RadioButtonChoiceA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="OnClickFragAll"
                 android:text="A:" />
 
             <RadioButton
+                android:id="@+id/RadioButtonChoiceB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="OnClickFragAll"
                 android:text="B:" />
 
             <RadioButton
+                android:id="@+id/RadioButtonChoiceC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="OnClickFragAll"
                 android:text="C:" />
 
             <RadioButton
+                android:id="@+id/RadioButtonChoiceD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="OnClickFragAll"
                 android:text="D:" />
 
         </LinearLayout>
-
-
-
 
 
         <LinearLayout
@@ -94,13 +90,12 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/ButtonNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="OnClickFragAll"
                 android:text="NEXT" />
         </LinearLayout>
-
-
-
 
 
     </LinearLayout>
