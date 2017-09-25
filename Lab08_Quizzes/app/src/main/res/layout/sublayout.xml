@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MergeRadioButton"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/RadioGroupChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/RadioButtonChoiceA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="OnClickFragAll"
+            android:tag="A"
+            tools:text="A:" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonChoiceB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="OnClickFragAll"
+            android:tag="B"
+            tools:text="B:" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonChoiceC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="OnClickFragAll"
+            android:tag="C"
+            tools:text="C:" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonChoiceD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="OnClickFragAll"
+            android:tag="D"
+            tools:text="D:" />
+
+    </RadioGroup>
+
+</merge>

@@ -1,9 +1,13 @@
 package com.example.student.lab08_quizzes;
 
 
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +15,13 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressLint("ValidFragment")
 public class QueFragment extends Fragment {
 
 
@@ -34,7 +37,8 @@ public class QueFragment extends Fragment {
     private ArrayList<String[]> QuesBank = new ArrayList<>();
 
 
-    public QueFragment() {
+    @SuppressLint("ValidFragment")
+    public QueFragment(/*int question*/) {
         // Required empty public constructor
     }
 
@@ -46,8 +50,16 @@ public class QueFragment extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
+
 
         tvnum = getView().findViewById(R.id.TextViewNumber);
         tvque = getView().findViewById(R.id.TextViewQuestion);
@@ -70,17 +82,27 @@ public class QueFragment extends Fragment {
         QuesBank.add(res.getStringArray(R.array.Q3));
 
 
-        String[] ques = QuesBank.get(0);
+        String[] ques = QuesBank.get(Question);
         tvnum.setText(String.valueOf(Question));
-        tvque.setText(ques[0]);
-        rbcha.setText(ques[1]);
-        rbchb.setText(ques[2]);
-        rbchc.setText(ques[3]);
-        rbchd.setText(ques[4]);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            tvque.setText(Html.fromHtml(ques[0], Html.FROM_HTML_MODE_LEGACY));
+            rbcha.setText(Html.fromHtml(ques[1], Html.FROM_HTML_MODE_LEGACY));
+            rbchb.setText(Html.fromHtml(ques[2], Html.FROM_HTML_MODE_LEGACY));
+            rbchc.setText(Html.fromHtml(ques[3], Html.FROM_HTML_MODE_LEGACY));
+            rbchd.setText(Html.fromHtml(ques[4], Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            tvque.setText(Html.fromHtml(ques[0]));
+            rbcha.setText(Html.fromHtml(ques[1]));
+            rbchb.setText(Html.fromHtml(ques[2]));
+            rbchc.setText(Html.fromHtml(ques[3]));
+            rbchd.setText(Html.fromHtml(ques[4]));
+        }
+
 
     }
 
     public void setQuestion(int question) {
         Question = question;
+        onStart();
     }
 }

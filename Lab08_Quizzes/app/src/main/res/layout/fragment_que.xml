@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FragmentSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
@@ -52,33 +53,9 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/RadioButtonChoiceA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="OnClickFragAll"
-                android:text="A:" />
 
-            <RadioButton
-                android:id="@+id/RadioButtonChoiceB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="OnClickFragAll"
-                android:text="B:" />
+            <include layout="@layout/sublayout"></include>
 
-            <RadioButton
-                android:id="@+id/RadioButtonChoiceC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="OnClickFragAll"
-                android:text="C:" />
-
-            <RadioButton
-                android:id="@+id/RadioButtonChoiceD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="OnClickFragAll"
-                android:text="D:" />
 
         </LinearLayout>
 
