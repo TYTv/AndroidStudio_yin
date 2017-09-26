@@ -11,7 +11,6 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 @SuppressLint("ValidFragment")
 public class QueFragment extends Fragment {
 
-
     private int Question;
     private TextView tvnum;
     private TextView tvque;
@@ -32,10 +30,9 @@ public class QueFragment extends Fragment {
     private RadioButton rbchb;
     private RadioButton rbchc;
     private RadioButton rbchd;
-    private Button btnext;
 
-    private ArrayList<String[]> QuesBank = new ArrayList<>();
 
+    private ArrayList<String[]> QuesBank = null;
 
     @SuppressLint("ValidFragment")
     public QueFragment(/*int question*/) {
@@ -63,46 +60,86 @@ public class QueFragment extends Fragment {
 
         tvnum = getView().findViewById(R.id.TextViewNumber);
         tvque = getView().findViewById(R.id.TextViewQuestion);
+
         rbcha = getView().findViewById(R.id.RadioButtonChoiceA);
         rbchb = getView().findViewById(R.id.RadioButtonChoiceB);
         rbchc = getView().findViewById(R.id.RadioButtonChoiceC);
         rbchd = getView().findViewById(R.id.RadioButtonChoiceD);
-        btnext = getView().findViewById(R.id.ButtonNext);
+
+
+        QuesBank = getQuestionBank();       // Get resources
+
+
+    }
+
+    public void setQuestion(int num) {
+        Question = num;
+        QuesBank = getQuestionBank();       // Get resources
+        show(Question);
+    }
+
+    public ArrayList<String[]> getQuestionBank() {
 
         Resources res = getResources();
+
 /*
-        for (int i = 0; i < Integer.getInteger(res.getString(R.string.BankSize)); i++) {
-            String s = "R.array.Q1";
-            int arrid = res.getIdentifier("R.array.Q1","array",this.getPackageName());
-            QuesBank.add(res.getStringArray(arrid));
-        }
+        StringBuilder sb = new StringBuilder("Q0");
+        sb.replace(1, 1, String.valueOf(1));
+        res.getIdentifier(R.array.Q1,,);
+        res.geti
+        int resId = res.getIdentifier("Q1", "array", getActivity().getPackageName());
 */
-        QuesBank.add(res.getStringArray(R.array.Q1));
-        QuesBank.add(res.getStringArray(R.array.Q2));
-        QuesBank.add(res.getStringArray(R.array.Q3));
 
 
-        String[] ques = QuesBank.get(Question);
-        tvnum.setText(String.valueOf(Question));
+        int rSrtingId[] = new int[Integer.parseInt(res.getString(R.string.ItemSize))];
+        StringBuilder sb = new StringBuilder("Q0");
+        ArrayList<String[]> als = new ArrayList<>();
+
+        sb.deleteCharAt(1);     // Qx delete
+
+//        for (int i = 0; i < PRM.BANK_SIZE; i++) {
+
+
+            sb.append(String.valueOf(Question + 1));    // Qn
+            int arrId = res.getIdentifier(sb.toString(), "array", getActivity().getPackageName());
+
+            als.add(res.getStringArray(arrId));
+            //   als.add(res.getStringArray(R.array.Q1));
+
+//        }
+        return (als);
+
+    }
+
+
+    public String[] getQuestion(int num) {
+        return (QuesBank.get(num));
+    }
+
+    private void show(int num) {
+
+        rbcha.setChecked(false);
+        rbchb.setChecked(false);
+        rbchc.setChecked(false);
+        rbchd.setChecked(false);
+
+        String[] Ques = getQuestion(num);
+
+        tvnum.setText(String.valueOf(num + 1));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            tvque.setText(Html.fromHtml(ques[0], Html.FROM_HTML_MODE_LEGACY));
-            rbcha.setText(Html.fromHtml(ques[1], Html.FROM_HTML_MODE_LEGACY));
-            rbchb.setText(Html.fromHtml(ques[2], Html.FROM_HTML_MODE_LEGACY));
-            rbchc.setText(Html.fromHtml(ques[3], Html.FROM_HTML_MODE_LEGACY));
-            rbchd.setText(Html.fromHtml(ques[4], Html.FROM_HTML_MODE_LEGACY));
+            tvque.setText(Html.fromHtml(Ques[PRM.Q_TOPIC], Html.FROM_HTML_MODE_LEGACY));
+            rbcha.setText(Html.fromHtml(Ques[PRM.Q_SEL_A], Html.FROM_HTML_MODE_LEGACY));
+            rbchb.setText(Html.fromHtml(Ques[PRM.Q_SEL_B], Html.FROM_HTML_MODE_LEGACY));
+            rbchc.setText(Html.fromHtml(Ques[PRM.Q_SEL_C], Html.FROM_HTML_MODE_LEGACY));
+            rbchd.setText(Html.fromHtml(Ques[PRM.Q_SEL_D], Html.FROM_HTML_MODE_LEGACY));
         } else {
-            tvque.setText(Html.fromHtml(ques[0]));
-            rbcha.setText(Html.fromHtml(ques[1]));
-            rbchb.setText(Html.fromHtml(ques[2]));
-            rbchc.setText(Html.fromHtml(ques[3]));
-            rbchd.setText(Html.fromHtml(ques[4]));
+            tvque.setText(Html.fromHtml(Ques[PRM.Q_TOPIC]));
+            rbcha.setText(Html.fromHtml(Ques[PRM.Q_SEL_A]));
+            rbchb.setText(Html.fromHtml(Ques[PRM.Q_SEL_B]));
+            rbchc.setText(Html.fromHtml(Ques[PRM.Q_SEL_C]));
+            rbchd.setText(Html.fromHtml(Ques[PRM.Q_SEL_D]));
         }
-
-
     }
 
-    public void setQuestion(int question) {
-        Question = question;
-        onStart();
-    }
+
 }

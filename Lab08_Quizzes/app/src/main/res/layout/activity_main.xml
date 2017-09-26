@@ -20,16 +20,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="START"
         android:onClick="OnClickAll"
+        android:text="START"
         android:textAppearance="@android:style/TextAppearance.Holo.Large" />
 
     <TextView
-        android:layout_width="wrap_content"
         android:id="@+id/TextViewResult"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="\n\n\n\n"
+        android:text=""
         android:textAppearance="@android:style/TextAppearance.Holo.Large"
         android:textSize="40sp" />
 

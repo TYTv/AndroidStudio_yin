@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class StartActivity extends AppCompatActivity {
+
 
     private static int Qnum;
 
@@ -26,36 +28,14 @@ public class StartActivity extends AppCompatActivity {
 
 //    ArrayList<String[]> QuesBank = new ArrayList<>();
 
-    private boolean choice[] = new boolean[4];
-    private String choiceString;
+    private boolean check[] = new boolean[4];
+    private CharSequence choice;
+    private ArrayList<String[]> QB = null;
 
     // Create Fragment
     QueFragment qf = null;
     FragmentManager fm = getSupportFragmentManager();
     FragmentTransaction ft = fm.beginTransaction();
-
-    private void InitQuestion(int Qnum) {
-
-        if (qf == null) {   // Init
-            qf = new QueFragment();
-            ft.add(R.id.FragmentStart, qf);
-            ft.commit();
-        } else {
-            //           QueFragment qfnew = new QueFragment();
-            //           ft.replace(R.id.FragmentSheet,qfnew);
-//            ft.remove(qf);
-//            ft.commit();
-
-//            qf = null;
-            //           qf = new QueFragment();
-//            ft.add(R.id.FragmentStart, qfnew);
-//            ft.commit();
-
-        }
-
-
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +55,7 @@ public class StartActivity extends AppCompatActivity {
 
         // Get question number
         Intent in = getIntent();
-        Qnum = in.getIntExtra("QueNum", 0);
+        Qnum = in.getIntExtra(PRM.DATA_START_NUM, 0);
 
         Fragment f = fm.findFragmentById(R.id.FragmentStart);
         qf = (QueFragment) f;
@@ -93,29 +73,6 @@ public class StartActivity extends AppCompatActivity {
         rbchd = v.findViewById(R.id.RadioButtonChoiceD);
         btnext = v.findViewById(R.id.ButtonNext);
 
-
-//        Resources res = getResources();
-/*
-        for (int i = 0; i < Integer.getInteger(res.getString(R.string.BankSize)); i++) {
-            String s = "R.array.Q1";
-            int arrid = res.getIdentifier("R.array.Q1", "array", this.getPackageName());
-            QuesBank.add(res.getStringArray(arrid));
-        }
-*/
-/*
-        QuesBank.add(res.getStringArray(R.array.Q1));
-        QuesBank.add(res.getStringArray(R.array.Q2));
-        QuesBank.add(res.getStringArray(R.array.Q3));
-
-
-        String[] ques = QuesBank.get(0);
-        tvnum.setText("1");
-        tvque.setText(ques[0]);
-        rbcha.setText(ques[1]);
-        rbchb.setText(ques[2]);
-        rbchc.setText(ques[3]);
-        rbchd.setText(ques[4]);
-*/
     }
 
 
@@ -128,37 +85,33 @@ public class StartActivity extends AppCompatActivity {
             case R.id.RadioButtonChoiceC:
             case R.id.RadioButtonChoiceD:
 
-                //  choiceChar = (char) view.getTag();
-                choiceString = view.getTag().toString();
+                choice = view.getTag().toString();
 
-                choice[0] = rbcha.isChecked();
-                choice[1] = rbchb.isChecked();
-                choice[2] = rbchc.isChecked();
-                choice[3] = rbchd.isChecked();
-
+                String solution = qf.getQuestion(Qnum)[PRM.Q_SOLUTION];
+                check[Qnum] = solution.equals(choice);
                 break;
 
             case R.id.ButtonNext:
 
-                int banksize = Integer.parseInt(getResources().getString(R.string.BankSize));
                 Qnum++;
-                if ((Qnum > 0) && (Qnum <= banksize)) {
+                if ((Qnum >= 0) && (Qnum < PRM.BANK_SIZE)) {
+
                     qf.setQuestion(Qnum);
-//                    InitQuestion(Qnum);
 
                 } else {     // Exit this activity and return choice
 
                     // Data ready
                     Bundle bd = new Bundle();
-                    bd.putBooleanArray("SUBMIT", choice);
-                    bd.putString("SUBMITstring", choiceString);
+                    bd.putBooleanArray(PRM.KEY, check);
+
 
                     // Result data return
                     Intent inback = new Intent();
+                    //      Intent inback = getIntent();
                     inback.putExtras(bd);
-                    setResult(RESULT_OK, inback);
 
-                    //finishActivity(100);
+                    setResult(PRM.CODE, inback);
+                    //finishActivity(PRM.CODE);
                     finish();
                 }
 
