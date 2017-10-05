@@ -1,6 +1,7 @@
 package com.example.student.lab17_spinner;
 
 import android.app.Activity;
+import android.content.res.TypedArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,13 +18,24 @@ public class MySpinnerAdapter extends BaseAdapter {
 
     private Activity act;
 
+    private static final String TAG = "MY_SPI";
+    private TypedArray titles;
+    private TypedArray drawables;
+    private int[] img_res_ids = {
+            R.drawable.coffee_cappuccino,
+            R.drawable.coffee_latte,
+            R.drawable.coffee_macchiato,
+            R.drawable.coffee_mocha
+    };
+
+
     public MySpinnerAdapter(Activity act) {
         this.act = act;
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return img_res_ids.length;
     }
 
     @Override
@@ -43,8 +55,12 @@ public class MySpinnerAdapter extends BaseAdapter {
         View v = act.getLayoutInflater().inflate(R.layout.layout_spinner, null);
 
         TextView tv = v.findViewById(R.id.TextViewTitle);
-        String[] sarr = act.getResources().getStringArray(R.array.CoffieName);
-        tv.setText(sarr[i]);
+//        String[] sarr = act.getResources().getStringArray(R.array.CoffieName);
+//        tv.setText(sarr[i]);
+
+        titles = act.getResources().obtainTypedArray(R.array.CoffieName);
+        tv.setText(titles.getString(i));
+
 
         ImageView iv = v.findViewById(R.id.ImageViewIcon);
         switch (i) {
@@ -64,6 +80,16 @@ public class MySpinnerAdapter extends BaseAdapter {
 
         return v;
 
+    }
+
+
+    public TypedArray getTitles() {
+        titles = act.getResources().obtainTypedArray(R.array.CoffieName);   // 刷新
+        return titles;
+    }
+
+    public int[] getImg_res_ids() {
+        return img_res_ids;
     }
 
 
